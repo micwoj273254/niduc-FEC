@@ -3,7 +3,7 @@ def bytearray_to_bits(byte_array):
     Convert a bytearray into an array of bits.
 
     :param byte_array: The bytearray to convert.
-    :return: A list of bits (0s and 1s).
+    :return: A list of bits.
     """
     bits = []
     for byte in byte_array:
@@ -17,7 +17,7 @@ def bits_to_bytearray(bits):
     """
     Convert an array of bits into a bytearray.
 
-    :param bits: A list of bits (0s and 1s).
+    :param bits: A list of bits.
     :return: A bytearray representing the bits.
     """
     if len(bits) % 8 != 0:

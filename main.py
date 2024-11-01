@@ -7,11 +7,11 @@ from generator import generate_random_bytes
 
 
 # Generate random bytes
-a = bytearray("hello world", "utf-8")
+a = generate_random_bytes(4)
 print("Original data:", a)
 
 # Create an RSCodec instance with 4 error correction symbols
-rsc = RSCodec(16)
+rsc = RSCodec(25)
 
 # Encode the data
 b = rsc.encode(a)
@@ -32,13 +32,12 @@ print("Number of errors in BSC channel:", bsc_errors)
 print("BSC BER:", bsc_errors/len(c))
 
 
-e = gechannel(c, 0.0009, 0.00004, 0.003631513, 0.99999)
+e, ge_independent, ge_burst = gechannel(c, 0.00111, 0.004, 0.007631513, 0.99999)
 print("Gilbert-Elliott channel data:", e)
-ge_errors = 0
-for i in range(len(c)):
-    if c[i] != e[i]:
-        ge_errors += 1
-print("Number of errors in Gilbert-Elliott channel:", ge_errors)
+ge_errors = ge_independent + ge_burst
+print("Total number of errors in Gilbert-Elliott channel:", ge_errors)
+print("Number of independent errors in Gilbert-Elliott channel:", ge_independent)
+print("Number of burst errors in Gilbert-Elliott channel:", ge_burst)
 print("Gilbert-Elliott BER:", ge_errors/len(c))
 
 
