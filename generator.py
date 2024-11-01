@@ -1,6 +1,11 @@
-import numpy as np
-import random
+import os
 
-def generate_bits(quantity):
-    return [random.randint(0,1) for i in range(0, quantity)]
-    #quantity - amount of bits to generate
+def generate_random_bytes(size):
+    """
+    Generate a byte array of random bytes.
+
+    :param size: The number of random bytes to generate.
+    :return: A byte array containing the random bytes.
+    """
+    random_bytes = os.urandom(size)
+    return bytearray(random_bytes)
