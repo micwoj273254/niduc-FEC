@@ -52,12 +52,16 @@ def binaryToStr(string :str)->str:
         out.append(chr(sum(int(c) * (2 ** i) for i, c in enumerate(element[::-1]))))
     return ''.join(out)
 
-def strListTointList(stringList :[])->[]:
-    list = []
+def d2StrListTod2intList(stringList :[])->[]:
+    out = []
     for element in stringList:
+        list = []
         for i in range(len(element)):
             list.append(int(element[i]))
-    return list
+            # print(list)
+        out.append(list)
+        # print(out)
+    return out
 
 def d2IntListTod2StrList(stringList :[])->[]:
     out = []
@@ -91,7 +95,7 @@ if __name__ == "__main__":
 
     print("List with strList length 11 in it :",d2strBinList)
 
-    d2BinList = strListTointList(d2strBinList)
+    d2BinList = d2StrListTod2intList(d2strBinList)
 
     print("List with intList length 11 in it :",d2BinList)
 
