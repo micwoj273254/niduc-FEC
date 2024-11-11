@@ -45,15 +45,6 @@ def binaryListToBinary(list :[],stripTrailing0 = 0)->str:
                 isOn = 0
     return out
 
-def binaryToListWithPrefix0b(string :str)->[]:
-    list  = binaryToBinaryList(string)
-    out = []
-    i = 0
-    for element in list:
-        out.append("0b"+element)
-    return out
-
-
 def binaryToStr(string :str)->str:
     list = binaryToBinaryList(string)
     out = []
@@ -61,16 +52,12 @@ def binaryToStr(string :str)->str:
         out.append(chr(sum(int(c) * (2 ** i) for i, c in enumerate(element[::-1]))))
     return ''.join(out)
 
-def d2StrListTod2IntList(stringList :[])->[]:
-    out = []
+def strListTointList(stringList :[])->[]:
+    list = []
     for element in stringList:
-        list = []
         for i in range(len(element)):
             list.append(int(element[i]))
-            #print(list)
-        out.append(list)
-        #print(out)
-    return out
+    return list
 
 def d2IntListTod2StrList(stringList :[])->[]:
     out = []
@@ -96,7 +83,6 @@ if __name__ == "__main__":
     binlist11 = binaryToBinaryList(binary,11)
 
     print("after binary_to_binary_list :", binlist11)
-    print("after binary_to_list_with_prefix_0b :", binaryToListWithPrefix0b(binary))
 
     d2strBinList = []
 
@@ -105,7 +91,7 @@ if __name__ == "__main__":
 
     print("List with strList length 11 in it :",d2strBinList)
 
-    d2BinList = d2StrListTod2IntList(d2strBinList)
+    d2BinList = strListTointList(d2strBinList)
 
     print("List with intList length 11 in it :",d2BinList)
 
