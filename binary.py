@@ -63,6 +63,18 @@ def d2StrListTod2intList(stringList :[])->[]:
         # print(out)
     return out
 
+def strListTointList(stringList :[])->[]:
+    out = []
+    for i in stringList:
+        out.append(int(i))
+    return out
+
+def intListToStrList(intList :[])->[]:
+    out = []
+    for i in intList:
+        out.append(str(i))
+    return out
+
 def d2IntListTod2StrList(stringList :[])->[]:
     out = []
     for element in stringList:
