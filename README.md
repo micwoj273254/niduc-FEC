@@ -16,7 +16,7 @@
   - [generator](#generator)
   - [HammingFunction](#hammingfunction)
 - [Biblioteki](#biblioteki)
-- [Źródła](#-źródła)
+- [Źródła](#źródła)
 
 
 ---
