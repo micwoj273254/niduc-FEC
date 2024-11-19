@@ -167,5 +167,7 @@ if run_hammingcode == 1:
     print("(bit) decoded Hamming code after ge :", decoded_dH)
     print("number of bsc errors:", bsc_errorH)
     print("(bit)position of bsc errors:", bsc_error_positionH)
+    print("BSC BER:", bsc_errorH / len(bH))
     print("number of ge errors:", ge_errorH)
     print("(bit)position of ge errors:", ge_error_positionH)
+    print("GE BER:", ge_errorH / len(bH))
