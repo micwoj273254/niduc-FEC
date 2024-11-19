@@ -16,6 +16,7 @@
   - [generator](#generator)
   - [HammingFunction](#hammingfunction)
 - [Biblioteki](#biblioteki)
+- [Źródła](#-źródła)
 
 
 ---
@@ -92,3 +93,6 @@ Niezawodność i diagnostyka – projekt
 ## Biblioteki
 - komm
 - reedsolo
+## Źródła
+- https://www.youtube.com/watch?v=X8jsijhllIA
+- https://www.youtube.com/watch?v=b3NxrZOu_CE&t=364s
