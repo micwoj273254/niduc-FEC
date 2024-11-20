@@ -31,7 +31,8 @@ Niezawodność i diagnostyka – projekt
     - **Kod Hamminga**
 - Symulacyjne badanie skuteczności transmisji dla parametrów 
   - **BER**
-  - błędy niezależne
+  - **błędy niezależne**
+  - **błędy zależne**
 ---
 ## Teoria
 
@@ -43,6 +44,9 @@ Niezawodność i diagnostyka – projekt
   - parametr `p` = [0,1] symbolizuje prawdopodobieństwo że bit na wyjściu będzie zamieniony
 
 - #### Gilberta-Elliotta
+
+  - kanał Gilberta-Elltiotta symuluje przekaz danych w sytuacji w której występują dwa stany jakości transmisji: Dobry i Zły.
+  - Błąd w stanie Dobrym nazywamy błędem niezależnym, natomiast błąd w stanie Złym - zależnym.
 
 ### Kody korekcyjne
 
@@ -61,7 +65,13 @@ Niezawodność i diagnostyka – projekt
   - podczas dekodowania kod sprawdza każdy numer pozycji z jedynką wykonując na ich binarnych reprezentacjach operację XOR po wykonaniu tej operacji ze wszystkimi numerami pozycji powinno wyjść 0 jeżeli zamiast zera wyszedł jakiś numer pozycji to znaczy że na tym numerze pozycji jest błąd i bit który tam się znajduję musi być zamieniony
 
 #### ReedSolomon
-
+  - W kodzie Reed-Solomon dane są podzielone na symbole, które są elementami skończonego ciała (zwykle ciała Galois, GF). Każdy symbol może reprezentować kilka bitów (np. 8-bitowy symbol może reprezentować wartości od 0 do 255).
+    - `n` – całkowita liczba symboli w bloku (dane + nadmiarowe symbole),
+    - `k`  – liczba symboli danych w bloku.
+  - Dane są dzielone na bloki o stałej długości, które składają się z `k` symboli.
+  - Do każdego bloku danych dodawane są `( n - k )` nadmiarowe symbole, które są generowane na podstawie danych wejściowych. Te nadmiarowe symbole są wykorzystywane do wykrywania i naprawiania błędów.
+  - Kod Reed-Solomon może naprawić do `(n - k}/2 )` błędnych symboli w bloku danych. Oznacza to, że im więcej nadmiarowych symboli dodamy, tym więcej błędów możemy naprawić.
+  - Do symulacji tego kodu używamy biblioteki `reedsolo`.
 
 
 ---
@@ -78,14 +88,20 @@ Niezawodność i diagnostyka – projekt
 - intListToStrList(`intList`) funkcja przyjmuje `intList` czyli listę z 0 1 zapisanymi jako liczby całkowite i zwraca taką samą listę w której 0 1 są zapisane jako słowa
 
 ### BSCchannel
-
+- bscchannel(`bits`, `p_error`) - funkcja symulująca kanał BSC z użyciem biblioteki `komm`.
 
 ### GEchannel
+- gechannel(`bits`, `p_good_to_bad`, `p_bad_to_good`, `p_error_good`, `p_error_bad`) - funkcja symulująca kanał Gilbert-Eliotta.
+- parametry:
+    - `p_good_to_bad` - prawdopodobieństwo zmiany stanu dobrego na stan zły
+    - `p_bad_to_good` - prawdopodobieństwo zmiany stanu złego na stan dobry
+    - `p_error_good` - prawdopodobieństwo błędu w stanie dobrym
+    - `p_error_bad` - prawdopodobieństwo błędu w stanie złym
 
 
 ### generator
-
-
+- generate_random_bytes(`size`) - funkcja generującą `size` losowych bajtów.
+  
 ### HammingFunction
 - HammingFunction(`byte_array`,`redundancy`) funkcja przyjmuje `byte_array` czyli listę bajtów oraz argument `redundancy` czyli liczbę całkowitą, funkcja zwraca tablicę 2d w której są zakodowane bity z tablicy bajtów za pomocą tylu bitów ile jest zapisane w `redundancy` oraz o odpowiedniej długości także wynikającej z tego parametru
 
