@@ -65,12 +65,12 @@ Niezawodność i diagnostyka – projekt
   - podczas dekodowania kod sprawdza każdy numer pozycji z jedynką wykonując na ich binarnych reprezentacjach operację XOR po wykonaniu tej operacji ze wszystkimi numerami pozycji powinno wyjść 0 jeżeli zamiast zera wyszedł jakiś numer pozycji to znaczy że na tym numerze pozycji jest błąd i bit który tam się znajduję musi być zamieniony
 
 #### ReedSolomon
-  - W kodzie Reed-Solomon dane są podzielone na symbole, które są elementami skończonego ciała (zwykle ciała Galois, GF). Każdy symbol może reprezentować kilka bitów (np. 8-bitowy symbol może reprezentować wartości od 0 do 255).
+  - W kodzie Reed-Solomon dane są podzielone na symbole, które są elementami skończonego ciała Galois.
     - `n` – całkowita liczba symboli w bloku (dane + nadmiarowe symbole),
     - `k`  – liczba symboli danych w bloku.
   - Dane są dzielone na bloki o stałej długości, które składają się z `k` symboli.
   - Do każdego bloku danych dodawane są `( n - k )` nadmiarowe symbole, które są generowane na podstawie danych wejściowych. Te nadmiarowe symbole są wykorzystywane do wykrywania i naprawiania błędów.
-  - Kod Reed-Solomon może naprawić do `(n - k}/2 )` błędnych symboli w bloku danych. Oznacza to, że im więcej nadmiarowych symboli dodamy, tym więcej błędów możemy naprawić.
+  - Kod Reed-Solomon może naprawić do `(n - k)/2` błędnych symboli w bloku danych. Oznacza to, że im więcej nadmiarowych symboli dodamy, tym więcej błędów możemy naprawić.
   - Do symulacji tego kodu używamy biblioteki `reedsolo`.
 
 
