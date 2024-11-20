@@ -58,6 +58,7 @@ Niezawodność i diagnostyka – projekt
   - *redundancy*: `m` = `μ` informuje program na ilu bitach ma zostać zakodowana wiadomość
   - *Dimension*: `k` = 2^μ -1 -μ jest to parametr odpowiadający za długość wiadomości w bitach
   - *Length*: `n` = 2^μ -1 czyli całkowita długość zakodowanej wiadomości
+  - Do symulacji tego kodu jest użyta biblioteka `komm`
 - ##### Działanie kodu Hamminga
 ##### Kodowanie
   - podczas kodowania kod najpierw tworzy listę o długości `n` i numeruję ją od 1 do `n`+1 numery będącę potęgą 2 zostają zarezerwowane dla bitów korekcyjnych reszta pozycji jest wypełniona bitami informacji numery pozycji są zamieniane na ich binarną reprezentację, każdy bit korekcyjny sprawdza czy na miejscach w których binarna reprezentacja liczby ma 1 na tej samej pozycji na której ma bit korekcyjny i sprawdza czy liczba jedynek na tych miejscach jest parzysta czy nieparzysta 0/1\
@@ -109,6 +110,8 @@ Niezawodność i diagnostyka – projekt
 ## Biblioteki
 - komm
 - reedsolo
+
+---
 ## Źródła
 - https://www.youtube.com/watch?v=X8jsijhllIA
 - https://www.youtube.com/watch?v=b3NxrZOu_CE&t=364s
